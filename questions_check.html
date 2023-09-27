@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Question Type Selector</title>
+</head>
+<body>
+    <div class="mb-3">
+        <label for="task-description-input" class="form-label">Question Type</label>
+        <select class="form-select" id="questionType" required>
+            <option value="" disabled selected>Select Question Type</option>
+            <option value="multipleChoice">Multiple Choice</option>
+            <option value="trueFalse">True or False</option>
+        </select>
+    </div>
+
+    <!-- Multiple Choice Inputs -->
+    <div id="multipleChoiceInputs" style="display: none;">
+        <label>Multiple Choice Options:</label><br>
+        <input class="form-control" type="radio" name="multipleChoiceOption" value="option1"> Option 1<br>
+        <input class="form-control" type="radio" name="multipleChoiceOption" value="option2"> Option 2<br>
+        <input class="form-control" type="radio" name="multipleChoiceOption" value="option3"> Option 3<br>
+        <input class="form-control" type="radio" name="multipleChoiceOption" value="option4"> Option 4<br>
+    </div>
+
+    <!-- True/False Input -->
+    <div id="trueFalseInput" style="display: none;">
+        <label>True or False:</label><br>
+        <input class="form-control" type="radio" name="trueFalseOption" value="true"> True<br>
+        <input class="form-control" type="radio" name="trueFalseOption" value="false"> False<br>
+    </div>
+
+    <script>
+        const questionTypeSelect = document.getElementById("questionType");
+        const multipleChoiceInputs = document.getElementById("multipleChoiceInputs");
+        const trueFalseInput = document.getElementById("trueFalseInput");
+
+        questionTypeSelect.addEventListener("change", function () {
+            const selectedOption = questionTypeSelect.value;
+
+            // Hide all input sections
+            multipleChoiceInputs.style.display = "none";
+            trueFalseInput.style.display = "none";
+
+            // Show the selected input section
+            if (selectedOption === "multipleChoice") {
+                multipleChoiceInputs.style.display = "block";
+            } else if (selectedOption === "trueFalse") {
+                trueFalseInput.style.display = "block";
+            }
+        });
+    </script>
+</body>
+</html>
